@@ -65,7 +65,7 @@ function deleteTODOAJAX(id) {
             if(xhr.status ==  STATUS_OK)
             {
 
-                addTodoElements(TODO_LIST_ID_ACTIVE,xhr.responseText);
+                addTodoElements(TODO_LIST_ID_DELETE,xhr.responseText);
             }
             else
             {
@@ -86,7 +86,7 @@ function completeTODOAJAX(id) {
             if(xhr.status ==  STATUS_OK)
             {
 
-                addTodoElements(TODO_LIST_ID_ACTIVE,xhr.responseText); //sending responses
+                addTodoElements(TODO_LIST_ID_COMPLETE,xhr.responseText); //sending responses
             }
             else
             {
@@ -131,7 +131,7 @@ function getTodosAJAX()
                 {
                     console.log(xhr.responseText);
 
-                    addTodoElements(TODO_LIST_ID,xhr.responseText);
+                    addTodoElements(TODO_LIST_ID_ACTIVE,xhr.responseText);
         }
     }
 }
