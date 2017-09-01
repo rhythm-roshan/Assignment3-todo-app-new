@@ -75,7 +75,8 @@ function createDeleteElement(_id,todo_object) {
 function createCheckbox(_id,todo_object) {
     var _div = document.createElement("div");
     var checkbox = document.createElement("input");
-    _div.setAttribute("align", "left");
+    _div.setAttribute("class", "col-xs-2");
+    _div.setAttribute("align", "right");
     checkbox.setAttribute("type", "checkbox");
     checkbox.setAttribute("onchange", "getCompleteTODOAJAX(" + _id + ")");
     if (todo_object.status === COMPLETE_STATUS ) {
@@ -90,13 +91,13 @@ function createCheckbox(_id,todo_object) {
 
 function createTitle(todo_object) {
     var todo_text = document.createElement("div");
-    todo_text.setAttribute("class", "todoStatus" + todo_object.status);
+    todo_text.setAttribute("class", "col-xs-8 todoStatus" + todo_object.status);
     todo_text.innerText = todo_object.title;
     return todo_text;
 }
 function createDeleteX(_id) {
     var x_div = document.createElement("div");
-    x_div.setAttribute("class", "text-danger col-xs-2");
+    x_div.setAttribute("class", "col-xs-2");
     var delete_x = document.createElement("button");
     delete_x.setAttribute("class", "btn btn-link");
     delete_x.innerText = "X";
