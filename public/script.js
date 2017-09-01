@@ -56,6 +56,7 @@ function createActiveElement(_id,todo_object) {
     todo_element.setAttribute("data-id",_id);
     todo_element.appendChild(createTitle(todo_object));
     todo_element.appendChild(createCheckbox(_id, todo_object));
+    todo_element.appendChild(createDeleteX(_id));
     return todo_element;
 
 }
@@ -64,11 +65,12 @@ function createCompleteElement(_id,todo_object) {
     todo_element.setAttribute("data-id", _id);
     todo_element.appendChild(createTitle(todo_object));
     todo_element.appendChild(createCheckbox(_id, todo_object));
+    todo_element.appendChild(createDeleteX(_id));
     return todo_element;
 }
 function createDeleteElement(_id,todo_object) {
     var todo_element = document.createElement("div");
-    todo_element.setAttribute("data-id", todo_id);
+    todo_element.setAttribute("data-id", _id);
     todo_element.appendChild(createTitle(todo_object));
     return todo_element;
 }
@@ -87,10 +89,10 @@ function createCheckbox(_id,todo_object) {
 
 }
 
-function getDeleteTODOAJAX(id) {
+function getDeletedTODOAJAX(id) {
     var xhr = new XMLHttpRequest();
 //xhr - JS object for making requests to server via JS
-    xhr.open("PUT", "/api/todos/" + todo_id);
+    xhr.open("PUT", "/api/todos/" + id);
     xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     var body_data = "todo_status="+encodeURI(DELETE_STATUS);
     xhr.onreadystatechange = function () {
@@ -159,7 +161,16 @@ function createTitle(todo_object) {
     todo_text.innerText = todo_object.title;
     return todo_text;
 }
-
+function createDeleteX(_id) {
+    var x_div = document.createElement("div");
+    //x_div.setAttribute("class", "text-danger col-xs-2");
+    var delete_x = document.createElement("button");
+    //delete_x.setAttribute("class", "btn btn-link");
+    delete_x.innerText = "X";
+    delete_x.setAttribute("onclick", "getDeletedTODOAJAX(" + _id + ")");
+   x_div.appendChild(delete_x);
+    return x_div;
+}
 function removeChildNode(parent) {
     while(parent.hasChildNodes())
     {

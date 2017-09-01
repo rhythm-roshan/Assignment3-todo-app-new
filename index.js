@@ -72,11 +72,11 @@ app.put("/api/todos/:id",function (req,res) {
         var todo_title = req.body.todo_title;
         if(todo_title && todo_title!="" && todo_title.trim()!="")
         {
-            todo_title = todo_title;
+            todo.title = todo_title;
         }
 
         var todo_status = req.body.todo_status;
-        if(todo_status && (todo_status==todo_db.StatusEnum.ACTIVE || todo_status==todo_db.StatusEnum.COMPLETE))
+        if(todo_status && (todo_status==todo_db.StatusEnum.ACTIVE || todo_status==todo_db.StatusEnum.COMPLETE ||todo_status==todo_db.StatusEnum.DELETED ))
 
         {
             todo.status=todo_status;
