@@ -6,19 +6,42 @@
     <link rel = "stylesheet" href="/style.css"/>
 </head>
 <body>
-My TODO List<br>
+<div class = "main-body">
 
-<button value="Get Todos" onclick="getTodosAJAX()" name="Get Todos">Get TODOS</button>
+    <div class = "heading">
+        <h1>  My TODO</h1> <br>
+    </div>
 
-<div id ="todo_list_div_active"></div>
+<div class="active-todo">
+    <p><b>ACTIVE TODO</b></p>
+    <div id ="todo_list_div_active">
+    </div>
+</div>
 
-<input type="text" placeholder="enter todo list" id="new_todo_input">
+<div class="new-todo">
+    <div class ="submit-todo">
+<input type="text" placeholder="enter todo list" id="new_todo_input"><br>
+    </div>
+    <div class ="submit-button-todo">
+<input type="button" value="Add todo" onclick="addTodoAJAX()"/><br>
+</div>
 
-<input type="button" value="Add todo" onclick="addTodoAJAX()"/>
 
-<div id = "todo_list_div_complete"></div>
+    <div class="complete-todo">
+        <p><b>COMPLETE TODO</b></p>
+        <div id ="todo_list_div_complete">
+        </div>
+    </div>
 
-<div id ="todo_list_div_delete"></div>
+    <div class="delete-todo">
+        <p><b>DELETED TODO</b></p>
+        <div id ="todo_list_div_delete">
+        </div>
+    </div>
+
+
+</div>
+
 
 <script src = "/script.js" type="text/javascript"></script>
 
