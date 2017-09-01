@@ -9,6 +9,10 @@ app.use("/",express.static(__dirname+"/public") , function (req,res,next) {
 
 app.use("/",bodyParser.urlencoded({extended : false}));
 
+app.use("/", function (req, res, next) {
+    console.log(req.method + " " + req.url);
+    next();
+});
 
 app.get("/api/todos",function (req,res) {
 
@@ -60,9 +64,8 @@ app.post("/api/todos",function (req,res) {
 app.put("/api/todos/:id",function (req,res) {
 
     var del_id = req.params.id;
-
     var todo = todo_db.todos[del_id];
-
+    console.log(todo);
     if(!todo)
     {
         res.status(400).json({error: "Can't modify a todo that doesnt exist"});
@@ -73,15 +76,18 @@ app.put("/api/todos/:id",function (req,res) {
         if(todo_title && todo_title!="" && todo_title.trim()!="")
         {
             todo.title = todo_title;
+            console.log(req.method + "inside title   " + req.url);
         }
 
         var todo_status = req.body.todo_status;
-        if(todo_status && (todo_status==todo_db.StatusEnum.ACTIVE || todo_status==todo_db.StatusEnum.COMPLETE ||todo_status==todo_db.StatusEnum.DELETED ))
 
+        if(todo_status )
         {
-            todo.status=todo_status;
-        }
 
+            todo.status=todo_status;
+
+        }
+console.log(todo_db.todos);
         res.json(todo_db.todos);
     }
 
