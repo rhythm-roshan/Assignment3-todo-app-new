@@ -4,30 +4,17 @@ var app = express();
 
 var todo_db = require("./seed.js");
 
-
-
 app.use("/",express.static(__dirname+"/public") , function (req,res,next) {
     next()});
 
 app.use("/",bodyParser.urlencoded({extended : false}));
-app.use("/", function (req,res,next) {
 
-
-next();
-
-})
 
 app.get("/api/todos",function (req,res) {
 
     res.json(todo_db.todos);
 })
-Object.objsize = function(Myobj) {
-    var osize = 0, key;
-    for (key in Myobj) {
-        if (Myobj.hasOwnProperty(key)) osize++;
-    }
-    return osize;
-};
+
 
 app.delete("/api/todos/:id",function (req,res) {
 var del_id = req.params.id;
@@ -90,67 +77,6 @@ app.put("/api/todos/:id",function (req,res) {
 
         var todo_status = req.body.todo_status;
         if(todo_status && (todo_status==todo_db.StatusEnum.ACTIVE || todo_status==todo_db.StatusEnum.COMPLETE))
-
-        {
-            todo.status=todo_status;
-        }
-
-        res.json(todo_db.todos);
-    }
-
-
-})
-
-app.put("/api/todos/complete/:id",function (req,res) {
-
-    var del_id = req.params.id;
-
-    var todo = todo_db.todos[del_id];
-
-    if(!todo || todo.status != todo_db.StatusEnum.COMPLETE )
-    {
-        res.status(400).json({error: "Can't modify a todo that doesnt exist"});
-    }
-    else
-    {
-        var todo_title = req.body.todo_title;
-        if(todo_title && todo_title!="" && todo_title.trim()!="")
-        {
-            todo_title = todo_title;
-        }
-
-        var todo_status = req.body.todo_status;
-        if(todo_status && todo_status==todo_db.StatusEnum.ACTIVE)
-
-        {
-            todo.status=todo_status;
-        }
-
-        res.json(todo_db.todos);
-    }
-
-
-})
-
-app.put("/api/todos/active/:id",function (req,res) {
-
-    var del_id = req.params.id;
-
-    var todo = todo_db.todos[del_id];
-
-    if(!todo || todo.status != todo_db.StatusEnum.COMPLETE )
-    {
-        res.status(400).json({error: "Can't modify a todo that doesnt exist"});
-    }
-    else
-    {
-        var todo_title = req.body.todo_title;
-        if(todo_title && todo_title!="" && todo_title.trim()!="")
-        {
-            todo_title = todo_title;
-        }
-
-        var todo_status = req.body.todo_status;
 
         {
             todo.status=todo_status;
