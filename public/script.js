@@ -97,7 +97,7 @@ function createTitle(todo_object) {
 }
 function createDeleteX(_id) {
     var x_div = document.createElement("div");
-    x_div.setAttribute("class", "col-xs-2");
+    //x_div.setAttribute("class", "col-xs-1");
     var delete_x = document.createElement("button");
     delete_x.setAttribute("class", "btn btn-link");
     delete_x.innerText = "X";

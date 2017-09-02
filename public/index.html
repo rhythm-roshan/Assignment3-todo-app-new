@@ -9,20 +9,18 @@
 <body>
 <div class = "container-fluid">
 
-    <div class = "heading container">
+    <div class = "heading container-fluid">
         <h1>  My TODO</h1> <br>
     </div>
 
-<div class="active-todo container-fluid breathTop borderBottom">
-    <div class="col-xs-2"></div>
-
-    <div class="col-xs-8">
-
+    <div class="active-todo container-fluid breathTop borderBottom">
+        <div class="col-xs-2"></div>
+        <div class="col-xs-8">
         <div><p><b>ACTIVE TODO</b></p></div>
         <div id ="todo_list_div_active"></div>
         </div>
 
-        </div>
+    </div>
 
 
 
@@ -30,9 +28,9 @@
     <div class="container-fluid borderBottom">
         <div class="col-xs-2"></div>
         <div id="add_todo_div" class="col-xs-8">
-            <h3>Add Todo</h3>
-            <div class="col-xs-4">
-                <input id="new_todo_input" type="text" placeholder="Todo Title Goes Here" class="form-control input-sm">
+            <div><p><b>ADD TODO</b></p></div>
+            <div class="col-xs-6 w3-container">
+                <input id="new_todo_input" type="text" placeholder="Todo Title Goes Here" class="w3-input">
             </div>
             <div class="btn-group">
 
@@ -56,12 +54,12 @@
         </div>
 
 
-    <div>
+    <div class="container-fluid">
         <div class="col-xs-2"></div>
         <div class="col-xs-8">
-            <p><b>Deleted Todos</b></p>
-            <div class="col-xs-2"></div>
-            <div id="todo_list_div_delete" class="col-xs-10">
+            <div><p><b>Deleted TODO</b></p></div>
+
+            <div id="todo_list_div_delete" >
 
             </div>
         </div>
