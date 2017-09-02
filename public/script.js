@@ -53,7 +53,6 @@ function createActiveElement(_id,todo_object) {
     todo_element.setAttribute("data-id",_id);
     todo_element.appendChild(createCheckbox(_id, todo_object));
     todo_element.appendChild(createTitle(todo_object));
-
     todo_element.appendChild(createDeleteX(_id));
     return todo_element;
 
@@ -101,7 +100,7 @@ function createDeleteX(_id) {
     //x_div.setAttribute("class", "text-danger col-xs-2");
     var delete_x = document.createElement("button");
     delete_x.setAttribute("class", "btn btn-link");
-    delete_x.innerText = "X";
+    delete_x.innerHTML = "<sup>X</sup>";
     delete_x.setAttribute("onclick", "getDeletedTODOAJAX(" + _id + ")");
    x_div.appendChild(delete_x);
     return x_div;
