@@ -1,14 +1,28 @@
 
+div{
+    font-family: "Arial";
+}
+input {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid black;
+    opacity: 9;
+}
+
 .btn-group button {
     background-color: #81c0ff;
-    border: 1px #44b3ff;
+    border:  #44b3ff;
     color: black;
     padding: 5px 10px; /* Some padding */
     cursor: pointer; /* Pointer/hand icon */
     float: left;
+    margin-bottom: 5px;
 
 }
-
+sup{
+    color : red;
+}
 div.heading{
     align-content: center;
     text-align: center;
@@ -23,19 +37,16 @@ div.heading{
 .borderBottom {
     border: solid #ffffff;
     border-bottom-color: #000000;
-}
-
-.breathHorizontal {
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-.breathVertical {
-    margin-top: 5px;
     margin-bottom: 5px;
 }
+
+
+
+div.add-todo{
+    opacity: 0.5;
+}
 div.todoStatusACTIVE{
-    color : blue
+    color : black
 }
 
 div.todoStatusCOMPLETE{

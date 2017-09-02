@@ -14,14 +14,14 @@
 <div class = "container-fluid">
 
     <div class = "heading container-fluid">
-        <h1>  My TODO</h1>
+        <h1>  My Todos</h1>
     </div>
 
     <div class="active-todo container-fluid breathTop borderBottom">
         <div class="col-xs-2"></div>
         <div class="col-xs-8">
         <div>
-            <p><b>ACTIVE TODO</b></p>
+            <p><b>Active Todos</b></p>
         </div>
         <div id ="todo_list_div_active"></div>
         </div>
@@ -34,15 +34,12 @@
     <div class="container-fluid borderBottom">
         <div class="col-xs-2"></div>
         <div id="add_todo_div" class="col-xs-8">
-            <div><p><b>ADD TODO</b></p></div>
-            <div class="col-xs-6 w3-container">
+            <div class="add-todo"><h4><p><b>Add Todo</b></p></h4></div>
+            <div class="col-xs-6 w3-container ">
                 <input id="new_todo_input" type="text" placeholder="Todo Title Goes Here" class="w3-input">
+                <div class="btn-group"> <button  class="btn-xs" onclick="addTodoAJAX()">ADD</button></div>
             </div>
-            <div class="btn-group">
 
-                <button  class="btn-xs" onclick="addTodoAJAX()">ADD</button>
-
-            </div>
         </div>
     </div>
 
