@@ -51,8 +51,9 @@ function addTodoElements(todo_data_json) {
 function createActiveElement(_id,todo_object) {
     var todo_element = document.createElement("div");
     todo_element.setAttribute("data-id",_id);
-    todo_element.appendChild(createTitle(todo_object));
     todo_element.appendChild(createCheckbox(_id, todo_object));
+    todo_element.appendChild(createTitle(todo_object));
+
     todo_element.appendChild(createDeleteX(_id));
     return todo_element;
 
@@ -60,8 +61,8 @@ function createActiveElement(_id,todo_object) {
 function createCompleteElement(_id,todo_object) {
     var todo_element = document.createElement("div");
     todo_element.setAttribute("data-id", _id);
-    todo_element.appendChild(createTitle(todo_object));
     todo_element.appendChild(createCheckbox(_id, todo_object));
+    todo_element.appendChild(createTitle(todo_object));
     todo_element.appendChild(createDeleteX(_id));
     return todo_element;
 }
@@ -97,7 +98,7 @@ function createTitle(todo_object) {
 }
 function createDeleteX(_id) {
     var x_div = document.createElement("div");
-    //x_div.setAttribute("class", "col-xs-1");
+    //x_div.setAttribute("class", "text-danger col-xs-2");
     var delete_x = document.createElement("button");
     delete_x.setAttribute("class", "btn btn-link");
     delete_x.innerText = "X";
