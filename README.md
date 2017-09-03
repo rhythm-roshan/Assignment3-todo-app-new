@@ -46,7 +46,7 @@ http://localhost:4000/
 
 6)All UI as per mock
 
-### Features Not Buid
+### Features Not Build
 
-UI of checkboxes.
+1)UI of checkboxes.
 
