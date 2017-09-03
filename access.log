@@ -1,0 +1,1 @@
+::1 - - [03/Sep/2017:06:48:39 +0000] "GET /api/todos HTTP/1.1" 200 303 "http://localhost:4000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"

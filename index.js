@@ -8,6 +8,9 @@
 /*-------------All CORE MODULE-------------*/
 var express = require('express');
 var bodyParser = require('body-parser');
+var morgan = require('morgan');
+var fs = require('fs');
+var path = require('path');
 var app = express();
 
 /*---------------------------------------*/
@@ -19,6 +22,12 @@ app.use("/",express.static(__dirname+"/public") , function (req,res,next) {
     next()});
 
 
+// create a write stream (in append mode)
+var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {flags: 'a'})
+
+// setup the logger
+
+app.use(morgan('combined', {stream: accessLogStream}))
 
 /*------------POST METHOD----------------*/
 
