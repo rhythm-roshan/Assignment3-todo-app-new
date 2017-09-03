@@ -31,7 +31,7 @@ http://localhost:4000/
 
 ## Functionality
 
-### Features Build
+### Features Built
 
 
 1)Active Todos : This section displays all active todos. Clicking the checkbox completes the todo. Clicking the red X deletes the todo.
@@ -46,7 +46,7 @@ http://localhost:4000/
 
 6)All UI as per mock
 
-### Features Not Build
+### Features Not Built
 
 1)UI of checkboxes.
 
