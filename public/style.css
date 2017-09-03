@@ -1,8 +1,10 @@
 
 div{
-    font-family: "Arial";
+    font-family: "Arial"; /* FONT of HTML Page*/
 }
-input {
+
+/*------Input Box Format--------- */
+input[type="text"] {
     border: 0;
     outline: 0;
     background: transparent;
@@ -10,30 +12,36 @@ input {
     opacity: 9;
 }
 
+/*------ADD Button ------------*/
 .btn-group button {
     background-color: #81c0ff;
     border:  #44b3ff;
     color: black;
     padding: 5px 10px; /* Some padding */
-    cursor: pointer; /* Pointer/hand icon */
+    cursor: pointer; /* Pointer hand icon */
     float: left;
     margin-bottom: 5px;
 
 }
+
+/*------Delete X Symbol Format--------- */
 sup{
     color : red;
 }
+
+/*-------My Todos Heading Styling------- */
 div.heading{
     align-content: center;
     text-align: center;
     background: #faffc2;
 }
 
-
+/*-----------Top Margin------------ */
 .breathTop {
     margin-top: 50px;
 }
 
+/*------Bottom Margin & Line Division------ */
 .borderBottom {
     border: solid #ffffff;
     border-bottom-color: #000000;
@@ -41,19 +49,23 @@ div.heading{
 }
 
 
-
+/*------Add Todos Title------------ */
 div.add-todo{
     opacity: 0.5;
 }
+
+/*------ACTIVE TEXT--------- */
 div.todoStatusACTIVE{
     color : black
 }
 
+/*------COMPLETED TEXT-------- */
 div.todoStatusCOMPLETE{
     color : green ;
     text-decoration : line-through
 }
 
+/*------DELETED TEXT-------- */
 div.todoStatusDELETED{
     color : red ;
     text-decoration : line-through

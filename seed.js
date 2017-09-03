@@ -1,9 +1,22 @@
+
+/*--------------ASSIGNMENT 3--------------*/
+/*-------------RHYTHM RAJ----------------*/
+/*---------------------------------------*/
+
+
+
+/*---------------------------------------*/
+/*----------Status Of Todos--------------*/
+/*---------------------------------------*/
 var StatusEnums={
     ACTIVE : "ACTIVE",
     COMPLETE : "COMPLETE",
     DELETED : "DELETED"
 }
 
+/*---------------------------------------*/
+/*-------------List of Todos-------------*/
+/*---------------------------------------*/
 var todos={
     1: {title : "Learn JS" , status : StatusEnums.ACTIVE},
     2: {title : "Git Tutorial" , status : StatusEnums.ACTIVE},
@@ -14,6 +27,10 @@ var todos={
     7: {title : "Git" , status : StatusEnums.ACTIVE},
 
 }
+
+/*---------------------------------------*/
+/*-------------NEXT TODOS ID-------------*/
+/*---------------------------------------*/
 
 var next_todo_id = 8;
 

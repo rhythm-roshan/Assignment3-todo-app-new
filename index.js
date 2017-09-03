@@ -1,11 +1,26 @@
+/*--------------ASSIGNMENT 3--------------*/
+/*-------------RHYTHM RAJ----------------*/
+/*---------------------------------------*/
+
+
+
+
+/*-------------All CORE MODULE-------------*/
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 
+/*---------------------------------------*/
+/*-------------ACCESS DATA----------------*/
+/*---------------------------------------*/
 var todo_db = require("./seed.js");
 
 app.use("/",express.static(__dirname+"/public") , function (req,res,next) {
     next()});
+
+
+
+/*------------POST METHOD----------------*/
 
 app.use("/",bodyParser.urlencoded({extended : false}));
 
@@ -14,12 +29,18 @@ app.use("/", function (req, res, next) {
     next();
 });
 
+/*---------------------------------------*/
+/*-------------API's---------------------*/
+/*---------------------------------------*/
+
+/*----------------GET-----------------------*/
 app.get("/api/todos",function (req,res) {
 
     res.json(todo_db.todos);
 })
 
 
+/*----------------DELETE-----------------------*/
 app.delete("/api/todos/:id",function (req,res) {
 var del_id = req.params.id;
 
@@ -37,7 +58,7 @@ else
 
 })
 
-
+/*----------------ADD DATA-----------------------*/
 app.post("/api/todos",function (req,res) {
 
     var todo = req.body.todo_title;
@@ -60,6 +81,8 @@ app.post("/api/todos",function (req,res) {
 
 
 })
+
+/*----------------MODIFY-----------------------*/
 
 app.put("/api/todos/:id",function (req,res) {
 
@@ -97,4 +120,11 @@ console.log(todo_db.todos);
 
 console.log(todo_db);
 
+/*----------------PORT NUMBER-----------------------*/
 app.listen(4000);
+
+
+
+/*---------------------------------------*/
+/*-------------RHYTHM RAJ----------------*/
+/*---------------------------------------*/

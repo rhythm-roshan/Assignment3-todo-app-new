@@ -1,3 +1,13 @@
+
+/*-------------ASSIGNMENT 3---------------*/
+/*-------------RHYTHM RAJ----------------*/
+/*---------------------------------------*/
+
+
+
+
+/*-------------CONSTANTS----------------*/
+
 const RESPONSE_DONE = 4;
 const STATUS_OK = 200;
 const TODO_LIST_ID_ACTIVE = "todo_list_div_active"
@@ -8,7 +18,12 @@ const ACTIVE_STATUS = "ACTIVE"
 const COMPLETE_STATUS = "COMPLETE"
 const DELETE_STATUS = "DELETED"
 
+/*-----------On loading Windows-----------*/
+
 window.onload = getTodosAJAX();
+
+
+/*----------Remove previous Data----------*/
 
 function removeChildNode(parent) {
     while(parent.hasChildNodes())
@@ -16,6 +31,8 @@ function removeChildNode(parent) {
         parent.removeChild(parent.lastChild);
     }
 }
+
+/*----------Adding a TODOs ELEMENT----------*/
 
 function addTodoElements(todo_data_json) {
 
@@ -48,6 +65,8 @@ function addTodoElements(todo_data_json) {
 
 }
 
+/*----------ACTIVE ELEMENTS----------*/
+
 function createActiveElement(_id,todo_object) {
     var todo_element = document.createElement("div");
     todo_element.setAttribute("data-id",_id);
@@ -57,6 +76,10 @@ function createActiveElement(_id,todo_object) {
     return todo_element;
 
 }
+
+
+/*----------COMPLETED ELEMENTS----------*/
+
 function createCompleteElement(_id,todo_object) {
     var todo_element = document.createElement("div");
     todo_element.setAttribute("data-id", _id);
@@ -65,6 +88,10 @@ function createCompleteElement(_id,todo_object) {
     todo_element.appendChild(createDeleteX(_id));
     return todo_element;
 }
+
+
+/*----------DELETED ELEMENTS------------*/
+
 function createDeleteElement(_id,todo_object) {
     var todo_element = document.createElement("div");
     todo_element.setAttribute("data-id", _id);
@@ -72,10 +99,14 @@ function createDeleteElement(_id,todo_object) {
     return todo_element;
 }
 
+
+/*----------CHECKBOXES-------------*/
+
+
 function createCheckbox(_id,todo_object) {
     var _div = document.createElement("div");
     var checkbox = document.createElement("input");
-    _div.setAttribute("class", "col-xs-2");
+    _div.setAttribute("class", "col-xs-2 Checkbox");
     _div.setAttribute("align", "right");
     checkbox.setAttribute("type", "checkbox");
     checkbox.setAttribute("onchange", "getCompleteTODOAJAX(" + _id + ")");
@@ -83,11 +114,13 @@ function createCheckbox(_id,todo_object) {
         checkbox.checked = true;
         checkbox.setAttribute('onchange', "getActiveTODOAJAX(" + _id + ")");
     }
-    _div.appendChild(checkbox);
+    _div.appendChild(checkbox)
     return _div;
 
 }
 
+
+/*------------Todos TItle-------------*/
 
 function createTitle(todo_object) {
     var todo_text = document.createElement("div");
@@ -95,6 +128,11 @@ function createTitle(todo_object) {
     todo_text.innerText = todo_object.title;
     return todo_text;
 }
+
+
+
+/*-------------DELETE X------------*/
+
 function createDeleteX(_id) {
     var x_div = document.createElement("div");
     var delete_x = document.createElement("button");
@@ -105,6 +143,10 @@ function createDeleteX(_id) {
     return x_div;
 }
 
+
+/*----------Hiding Complete Section---------*/
+
+
 function toggleVisibilityComplete() {
     var content = document.getElementById(TODO_LIST_ID_COMPLETE);
     if(content.style.display == 'block')
@@ -112,6 +154,9 @@ function toggleVisibilityComplete() {
     else
         content.style.display = 'block';
 }
+
+/*----------Hiding Deleted Section---------*/
+
 function toggleVisibilityDeleted() {
     var content = document.getElementById(TODO_LIST_ID_DELETE);
     if(content.style.display == 'block')
@@ -122,8 +167,13 @@ function toggleVisibilityDeleted() {
 
 
 
+/*------------------------------------------*/
+/*----------AJAX for operation--------------*/
+/*------------------------------------------*/
 
-// Get all the todos
+
+/*--------------Get ALL TODOS--------------*/
+
 function getTodosAJAX() {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "/api/todos");
@@ -140,6 +190,8 @@ function getTodosAJAX() {
     xhr.send(data = null);
 }
 
+
+/*------------------Add TODOs------------------*/
 
 
 function addTodoAJAX() {
@@ -165,6 +217,9 @@ function addTodoAJAX() {
     xhr.send(body_data);
 }
 
+
+/*------------------DELETED TODOs------------------*/
+
 function getDeletedTODOAJAX(id) {
     var xhr = new XMLHttpRequest();
 //xhr - JS object for making requests to server via JS
@@ -186,6 +241,9 @@ function getDeletedTODOAJAX(id) {
     }
     xhr.send(body_data);
 }
+
+
+/*------------------ACTIVE TODOs------------------*/
 
 function getActiveTODOAJAX(id) {
     var xhr = new XMLHttpRequest();
@@ -210,6 +268,9 @@ function getActiveTODOAJAX(id) {
     }
     xhr.send(body_data);
 }
+
+
+/*------------------COMPLETED TODOs------------------*/
 
 function getCompleteTODOAJAX(id) {
     var xhr = new XMLHttpRequest();
