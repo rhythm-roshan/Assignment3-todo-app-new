@@ -131,7 +131,7 @@ function createTitle(todo_object) {
 
 
 
-/*-------------DELETE X------------*/
+/*-------------DELETE X--------------*/
 
 function createDeleteX(_id) {
     var x_div = document.createElement("div");
@@ -149,20 +149,21 @@ function createDeleteX(_id) {
 
 function toggleVisibilityComplete() {
     var content = document.getElementById(TODO_LIST_ID_COMPLETE);
-    if(content.style.display == 'block')
-        content.style.display = 'none';
-    else
+
+    if(content.style.display === 'none')
         content.style.display = 'block';
+    else
+        content.style.display = 'none';
 }
 
 /*----------Hiding Deleted Section---------*/
 
 function toggleVisibilityDeleted() {
     var content = document.getElementById(TODO_LIST_ID_DELETE);
-    if(content.style.display == 'block')
-        content.style.display = 'none';
-    else
+    if(content.style.display == 'none')
         content.style.display = 'block';
+    else
+        content.style.display = 'none';
 }
 
 
@@ -195,7 +196,10 @@ function getTodosAJAX() {
 
 
 function addTodoAJAX() {
-    var title = document.getElementById(NEW_TODO_ID).value;
+    var title_input = document.getElementById(NEW_TODO_ID);
+    var title = title_input.value;
+
+    title_input.value = "";
     console.log(title);
     var xhr = new XMLHttpRequest();
     xhr.open("POST","/api/todos",true);
