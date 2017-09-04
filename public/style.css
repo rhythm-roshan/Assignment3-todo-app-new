@@ -1,6 +1,47 @@
 
-div{
+div {
     font-family: "Arial"; /* FONT of HTML Page*/
+}
+
+/*----------Checkbox UI-----------------*/
+input[type=checkbox].css-checkbox {
+    position: absolute;
+    z-index: -1000;
+    left: -1000px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+
+input[type=checkbox].css-checkbox + label.css-label {
+    padding-left: 30px;
+    height: 25px;
+    display: inline-block;
+    line-height: 25px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    font-size: 25px;
+    vertical-align: middle;
+    cursor: pointer;
+
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+    background-position: 0 -25px;
+}
+
+label.css-label {
+    background-image: url(checkbox.png);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 /*------Input Box Format--------- */
@@ -15,7 +56,7 @@ input[type="text"] {
 /*------ADD Button ------------*/
 .btn-group button {
     background-color: #81c0ff;
-    border:  #44b3ff;
+    border: #44b3ff;
     color: black;
     padding: 5px 10px; /* Some padding */
     cursor: pointer; /* Pointer hand icon */
@@ -25,12 +66,12 @@ input[type="text"] {
 }
 
 /*------Delete X Symbol Format--------- */
-sup{
-    color : red;
+sup {
+    color: red;
 }
 
 /*-------My Todos Heading Styling------- */
-div.heading{
+div.heading {
     align-content: center;
     text-align: center;
     background: #faffc2;
@@ -48,25 +89,24 @@ div.heading{
     margin-bottom: 5px;
 }
 
-
 /*------Add Todos Title------------ */
-div.add-todo{
+div.add-todo {
     opacity: 0.5;
 }
 
 /*------ACTIVE TEXT--------- */
-div.todoStatusACTIVE{
-    color : black
+div.todoStatusACTIVE {
+    color: black
 }
 
 /*------COMPLETED TEXT-------- */
-div.todoStatusCOMPLETE{
-    color : green ;
-    text-decoration : line-through
+div.todoStatusCOMPLETE {
+    color: green;
+    text-decoration: line-through
 }
 
 /*------DELETED TEXT-------- */
-div.todoStatusDELETED{
-    color : red ;
-    text-decoration : line-through
+div.todoStatusDELETED {
+    color: red;
+    text-decoration: line-through
 }

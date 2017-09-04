@@ -37,3 +37,8 @@
 ::1 - - [04/Sep/2017:05:58:27 +0000] "GET /api/todos HTTP/1.1" 304 - "http://localhost:4000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"
 ::1 - - [04/Sep/2017:05:58:29 +0000] "PUT /api/todos/7 HTTP/1.1" 200 305 "http://localhost:4000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"
 ::1 - - [04/Sep/2017:05:58:30 +0000] "PUT /api/todos/6 HTTP/1.1" 200 307 "http://localhost:4000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"
+::1 - - [04/Sep/2017:06:43:53 +0000] "GET /api/todos HTTP/1.1" 304 - "http://localhost:4000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"
+::1 - - [04/Sep/2017:06:44:01 +0000] "PUT /api/todos/1 HTTP/1.1" 200 305 "http://localhost:4000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"
+::1 - - [04/Sep/2017:06:44:02 +0000] "PUT /api/todos/3 HTTP/1.1" 200 307 "http://localhost:4000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"
+::1 - - [04/Sep/2017:06:44:02 +0000] "PUT /api/todos/2 HTTP/1.1" 200 309 "http://localhost:4000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"
+::1 - - [04/Sep/2017:06:44:03 +0000] "PUT /api/todos/5 HTTP/1.1" 200 311 "http://localhost:4000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"

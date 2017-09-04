@@ -1,9 +1,6 @@
-
 /*-------------ASSIGNMENT 3---------------*/
 /*-------------RHYTHM RAJ----------------*/
 /*---------------------------------------*/
-
-
 
 
 /*-------------CONSTANTS----------------*/
@@ -26,8 +23,7 @@ window.onload = getTodosAJAX();
 /*----------Remove previous Data----------*/
 
 function removeChildNode(parent) {
-    while(parent.hasChildNodes())
-    {
+    while (parent.hasChildNodes()) {
         parent.removeChild(parent.lastChild);
     }
 }
@@ -45,19 +41,15 @@ function addTodoElements(todo_data_json) {
     removeChildNode(complete_parent);
     removeChildNode(delete_parent);
 
-    for(_id in todos)
-    {
-        if(todos[_id].status === ACTIVE_STATUS)
-        {
-            active_parent.appendChild(createActiveElement(_id,todos[_id]));
+    for (_id in todos) {
+        if (todos[_id].status === ACTIVE_STATUS) {
+            active_parent.appendChild(createActiveElement(_id, todos[_id]));
         }
-        if(todos[_id].status === COMPLETE_STATUS)
-        {
-            complete_parent.appendChild(createCompleteElement(_id,todos[_id]));
+        if (todos[_id].status === COMPLETE_STATUS) {
+            complete_parent.appendChild(createCompleteElement(_id, todos[_id]));
         }
-        if(todos[_id].status === DELETE_STATUS)
-        {
-            delete_parent.appendChild(createDeleteElement(_id,todos[_id]));
+        if (todos[_id].status === DELETE_STATUS) {
+            delete_parent.appendChild(createDeleteElement(_id, todos[_id]));
         }
 
 
@@ -67,9 +59,9 @@ function addTodoElements(todo_data_json) {
 
 /*----------ACTIVE ELEMENTS----------*/
 
-function createActiveElement(_id,todo_object) {
+function createActiveElement(_id, todo_object) {
     var todo_element = document.createElement("div");
-    todo_element.setAttribute("data-id",_id);
+    todo_element.setAttribute("data-id", _id);
     todo_element.appendChild(createCheckbox(_id, todo_object));
     todo_element.appendChild(createTitle(todo_object));
     todo_element.appendChild(createDeleteX(_id));
@@ -80,7 +72,7 @@ function createActiveElement(_id,todo_object) {
 
 /*----------COMPLETED ELEMENTS----------*/
 
-function createCompleteElement(_id,todo_object) {
+function createCompleteElement(_id, todo_object) {
     var todo_element = document.createElement("div");
     todo_element.setAttribute("data-id", _id);
     todo_element.appendChild(createCheckbox(_id, todo_object));
@@ -92,7 +84,7 @@ function createCompleteElement(_id,todo_object) {
 
 /*----------DELETED ELEMENTS------------*/
 
-function createDeleteElement(_id,todo_object) {
+function createDeleteElement(_id, todo_object) {
     var todo_element = document.createElement("div");
     todo_element.setAttribute("data-id", _id);
     todo_element.appendChild(createTitle(todo_object));
@@ -103,18 +95,24 @@ function createDeleteElement(_id,todo_object) {
 /*----------CHECKBOXES-------------*/
 
 
-function createCheckbox(_id,todo_object) {
+function createCheckbox(_id, todo_object) {
     var _div = document.createElement("div");
     var checkbox = document.createElement("input");
     _div.setAttribute("class", "col-xs-2 Checkbox");
     _div.setAttribute("align", "right");
     checkbox.setAttribute("type", "checkbox");
+    checkbox.setAttribute("class", "css-checkbox");
+    checkbox.setAttribute("id", "checkbox" + _id);
     checkbox.setAttribute("onchange", "getCompleteTODOAJAX(" + _id + ")");
-    if (todo_object.status === COMPLETE_STATUS ) {
+    if (todo_object.status === COMPLETE_STATUS) {
         checkbox.checked = true;
         checkbox.setAttribute('onchange', "getActiveTODOAJAX(" + _id + ")");
     }
-    _div.appendChild(checkbox)
+    _div.appendChild(checkbox);
+    var label = document.createElement("label");
+    label.setAttribute("for", "checkbox" + _id);
+    label.setAttribute("class", "css-label");
+    _div.appendChild(label);
     return _div;
 
 }
@@ -130,7 +128,6 @@ function createTitle(todo_object) {
 }
 
 
-
 /*-------------DELETE X--------------*/
 
 function createDeleteX(_id) {
@@ -139,7 +136,7 @@ function createDeleteX(_id) {
     delete_x.setAttribute("class", "btn btn-link");
     delete_x.innerHTML = "<b><sup>X</sup></b>";
     delete_x.setAttribute("onclick", "getDeletedTODOAJAX(" + _id + ")");
-   x_div.appendChild(delete_x);
+    x_div.appendChild(delete_x);
     return x_div;
 }
 
@@ -150,7 +147,7 @@ function createDeleteX(_id) {
 function toggleVisibilityComplete() {
     var content = document.getElementById(TODO_LIST_ID_COMPLETE);
 
-    if(content.style.display === 'none')
+    if (content.style.display === 'none')
         content.style.display = 'block';
     else
         content.style.display = 'none';
@@ -160,12 +157,11 @@ function toggleVisibilityComplete() {
 
 function toggleVisibilityDeleted() {
     var content = document.getElementById(TODO_LIST_ID_DELETE);
-    if(content.style.display == 'none')
+    if (content.style.display == 'none')
         content.style.display = 'block';
     else
         content.style.display = 'none';
 }
-
 
 
 /*------------------------------------------*/
@@ -202,16 +198,15 @@ function addTodoAJAX() {
     title_input.value = "";
     console.log(title);
     var xhr = new XMLHttpRequest();
-    xhr.open("POST","/api/todos",true);
-    xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    var body_data = "todo_title="+encodeURI(title) ;
+    xhr.open("POST", "/api/todos", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var body_data = "todo_title=" + encodeURI(title);
     xhr.onreadystatechange = function () {
-        if(xhr.readyState == RESPONSE_DONE){
-            if(xhr.status ==  STATUS_OK)
-            {
+        if (xhr.readyState == RESPONSE_DONE) {
+            if (xhr.status == STATUS_OK) {
                 addTodoElements(xhr.responseText);
             }
-            else{
+            else {
                 var resp = JSON.parse(xhr.responseText);
                 alert(resp.error);
             }
@@ -228,17 +223,15 @@ function getDeletedTODOAJAX(id) {
     var xhr = new XMLHttpRequest();
 //xhr - JS object for making requests to server via JS
     xhr.open("PUT", "/api/todos/" + id);
-    xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    var body_data = "todo_status="+encodeURI(DELETE_STATUS);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var body_data = "todo_status=" + encodeURI(DELETE_STATUS);
     xhr.onreadystatechange = function () {
-        if(xhr.readyState == RESPONSE_DONE){
-            if(xhr.status ==  STATUS_OK)
-            {
+        if (xhr.readyState == RESPONSE_DONE) {
+            if (xhr.status == STATUS_OK) {
 
                 addTodoElements(xhr.responseText);
             }
-            else
-            {
+            else {
                 console.log(xhr.responseText);
             }
         }
@@ -252,20 +245,18 @@ function getDeletedTODOAJAX(id) {
 function getActiveTODOAJAX(id) {
     var xhr = new XMLHttpRequest();
 //xhr - JS object for making requests to server via JS
-    xhr.open("PUT","api/todos/"+id);
-    xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    var body_data = "todo_status="+(ACTIVE_STATUS);
+    xhr.open("PUT", "api/todos/" + id);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    var body_data = "todo_status=" + (ACTIVE_STATUS);
     xhr.onreadystatechange = function () {
-        if(xhr.readyState == RESPONSE_DONE){
-            if(xhr.status ==  STATUS_OK)
-            {
+        if (xhr.readyState == RESPONSE_DONE) {
+            if (xhr.status == STATUS_OK) {
 
                 addTodoElements(xhr.responseText); //sending responses
                 console.log(xhr.responseText);
 
             }
-            else
-            {
+            else {
                 console.log(xhr.responseText);
             }
         }
@@ -279,18 +270,16 @@ function getActiveTODOAJAX(id) {
 function getCompleteTODOAJAX(id) {
     var xhr = new XMLHttpRequest();
 //xhr - JS object for making requests to server via JS
-    xhr.open("PUT","api/todos/"+id,true);
-    xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xhr.open("PUT", "api/todos/" + id, true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     var body_data = "todo_status=COMPLETE";
     xhr.onreadystatechange = function () {
-        if(xhr.readyState == RESPONSE_DONE){
-            if(xhr.status ==  STATUS_OK)
-            {
+        if (xhr.readyState == RESPONSE_DONE) {
+            if (xhr.status == STATUS_OK) {
 
                 addTodoElements(xhr.responseText); //sending responses
             }
-            else
-            {
+            else {
                 console.log(xhr.responseText);
             }
         }

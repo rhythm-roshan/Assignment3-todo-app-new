@@ -48,5 +48,5 @@ http://localhost:4000/
 
 ### Features Not Built
 
-1)UI of checkboxes.
+All features built :D
 
